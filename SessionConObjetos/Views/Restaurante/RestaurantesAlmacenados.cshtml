@@ -1,0 +1,33 @@
+﻿@using SessionConObjetos.Extensions;
+@{
+    List<Restaurante> restaurantes = Context.Session.GetObject<List<Restaurante>>("ListaObjetos");
+}
+@if(restaurantes != null)
+{
+<table class="table table-info">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach(Restaurante rest in restaurantes)
+            {
+                <tr>
+                    <td>@rest.Nombre_restaurante</td>
+                    <td>@rest.Direccion</td>
+                    <td>@rest.Telefono</td>
+                    <td> <img src="~/images/@rest.Imagen" style="width:200px;height:100px;" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h1>No hay restaurantes Almacenados</h1>
+}
+

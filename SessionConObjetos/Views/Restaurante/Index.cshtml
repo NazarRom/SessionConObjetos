@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SessionConObjetos.Models.Restaurante>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="Restaurante" asp-action="RestaurantesAlmacenados" class="btn btn-warning">Restaurantes almacenados</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRestaurante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_restaurante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRestaurante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_restaurante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_categoria)
+            </td>
+            <td>
+               <img src="~/images/@item.Imagen" style="width:200px;height:100px;"/>
+            </td>
+            <td>
+                 <a asp-controller="Restaurante" asp-action="GuardarSession" asp-route-idrest="@item.IdRestaurante" class="btn btn-success">Añadir a la Session</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
